@@ -2,33 +2,14 @@
 path = ARGV.length > 0 ? ARGV[0] : '/usr/share/dict/words'
 $dict = File.read(path).split("\n")
 
-mid = $dict[117468]
+contents = $stdin.read
+output = contents.gsub(/[^ \n]+/) do |word|
+  w = word.downcase
 
-# def check(word, left, right)
-#   mid_index = (right - left) / 2 + left
-#   mid_word = $dict[mid_index]
-#   if mid_word == word
-#     return true
-#   elsif (right - left) == 1
-#     if $dict[mid_index + 1] == word
-#       return true
-#     else
-#       return false
-#     end
-#   else
-#     if (word < mid_word)
-#       return check(word, left, mid_index - 1)
-#     else
-#       return check(word, mid_index + 1, right)
-#     end
-#   end
-
-#   false
-# end
-
-def check(word, left, right)
   go = true
   output = false
+  left = 0
+  right = 234936
   while go
 
     mid_index = (right - left) / 2 + left
@@ -70,21 +51,7 @@ def check(word, left, right)
 
   end
 
-  return output
-
-end
-
-contents = $stdin.read
-output = contents.gsub(/[^ \n]+/) do |word|
-  w = word.downcase
-
-  # if word.downcase == word
-    c = check(w, 0, 234936)
-  # else
-    # c = false
-  # end
-
-  if c
+  if output
     word
   else
     "<#{word}>"
