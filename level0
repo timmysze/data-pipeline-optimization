@@ -1,19 +1,11 @@
 #!/usr/bin/env ruby
-
-# Our test cases will always use the same dictionary file (with SHA1
-# 6b898d7c48630be05b72b3ae07c5be6617f90d8e). Running `test/harness`
-# will automatically download this dictionary for you if you don't
-# have it already.
-
 path = ARGV.length > 0 ? ARGV[0] : '/usr/share/dict/words'
 dict = File.read(path).split("\n")
 hash1 = Hash[*dict[0, 58735], :blank, :blank, *dict[0, 58735]]
 hash2 = Hash[*dict[58735, 58735], :blank, :blank, *dict[58735, 58735]]
 hash3 = Hash[*dict[117470, 58735], :blank, :blank, *dict[117470, 58735]]
 hash4 = Hash[*dict[176205, 58732], :blank, *dict[176205, 58732], :blank]
-
 contents = $stdin.read
-
 output = contents.gsub(/[^ \n]+/) do |word|
   w = word.downcase
   if hash1.has_key?(w)
@@ -28,5 +20,4 @@ output = contents.gsub(/[^ \n]+/) do |word|
     "<#{word}>"
   end
 end
-
 print output
