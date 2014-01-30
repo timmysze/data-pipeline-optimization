@@ -6,14 +6,27 @@
 # have it already.
 
 path = ARGV.length > 0 ? ARGV[0] : '/usr/share/dict/words'
-entries = File.read(path).split("\n")
+dict = File.read(path).split("\n")
+hash1 = Hash[*dict[0, 58735], :blank, :blank, *dict[0, 58735]]
+hash2 = Hash[*dict[58735, 58735], :blank, :blank, *dict[58735, 58735]]
+hash3 = Hash[*dict[117470, 58735], :blank, :blank, *dict[117470, 58735]]
+hash4 = Hash[*dict[176205, 58732], :blank, *dict[176205, 58732], :blank]
 
 contents = $stdin.read
+
 output = contents.gsub(/[^ \n]+/) do |word|
-  if entries.include?(word.downcase)
+  w = word.downcase
+  if hash1.has_key?(w)
+    word
+  elsif hash2.has_key?(w)
+    word
+  elsif hash3.has_key?(w)
+    word
+  elsif hash4.has_key?(w)
     word
   else
     "<#{word}>"
   end
 end
+
 print output
