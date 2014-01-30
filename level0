@@ -18,7 +18,7 @@ output = contents.gsub(/[^ \n]+/) do |word|
     # puts word + ', ' + left.to_s + ', ' + mid_index.to_s + ', ' + right.to_s + ', ' + mid_word
     if (right - left) == 0
 
-      if word == mid_word
+      if w == mid_word
         output = true
         go = false
       else
@@ -28,7 +28,7 @@ output = contents.gsub(/[^ \n]+/) do |word|
 
     elsif (right - left) == 1
 
-      if word == mid_word || word == $dict[mid_index + 1]
+      if w == mid_word || w == $dict[mid_index + 1]
         output = true
         go = false
       else
@@ -38,10 +38,10 @@ output = contents.gsub(/[^ \n]+/) do |word|
 
     else
 
-      if word == mid_word
+      if w == mid_word
         output = true
         go = false
-      elsif (word < $dict[mid_index].downcase)
+      elsif (w < $dict[mid_index].downcase)
         right = mid_index - 1
       else
         left = mid_index + 1
