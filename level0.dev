@@ -1,0 +1,109 @@
+#!/usr/bin/env ruby
+path = ARGV.length > 0 ? ARGV[0] : '/usr/share/dict/words'
+
+# .240
+# hash1 = {}
+# hash2 = {}
+# hash3 = {}
+# hash4 = {}
+# line_num = 1
+# File.open(path).each do |line|
+#   if line_num <= 58735
+#     hash1[line] = nil
+#   elsif line_num <= 117470
+#     hash2[line] = nil
+#   elsif line_num <= 1176205
+#     hash3[line] = nil
+#   else
+#     hash4[line] = nil
+#   end
+
+#   line_num += 1
+# end
+
+# i dunno!
+# array1 = []
+# array2 = []
+# array3 = []
+# array4 = []
+# line_num = 1
+# File.open(path).each do |line|
+#   if line_num <= 58735
+#     array1.push(line)
+#   elsif line_num <= 117470
+#     array2.push(line)
+#   elsif line_num <= 1176205
+#     array3.push(line)
+#   else
+#     array4.push(line)
+#   end
+#   line_num += 1
+# end
+# hash1 = Hash[*array1, :blank, :blank, *array1]
+# hash2 = Hash[*array2, :blank, :blank, *array2]
+# hash3 = Hash[*array3, :blank, :blank, *array3]
+# hash4 = Hash[*array4, :blank, *array4, :blank]
+
+# .250
+# hash1 = {}
+# hash2 = {}
+# hash3 = {}
+# hash4 = {}
+# line_num = 1
+# IO.foreach(path) do |line|
+#   if line_num <= 58735
+#     hash1[line] = nil
+#   elsif line_num <= 117470
+#     hash2[line] = nil
+#   elsif line_num <= 1176205
+#     hash3[line] = nil
+#   else
+#     hash4[line] = nil
+#   end
+
+#   line_num += 1
+# end
+
+
+# .202
+dict = File.read(path).split("\n")
+hash1 = Hash[*dict[0, 58735], :blank, :blank, *dict[0, 58735]]
+hash2 = Hash[*dict[58735, 58735], :blank, :blank, *dict[58735, 58735]]
+hash3 = Hash[*dict[117470, 58735], :blank, :blank, *dict[117470, 58735]]
+hash4 = Hash[*dict[176205, 58732], :blank, *dict[176205, 58732], :blank]
+
+# .200
+# dict = File.read(path).split("\n")
+# hash1 = Hash[*dict[0, 58735], :blank, :blank, *dict[0, 58735]]
+# dict2 = dict[58735, 58735]
+# hash2 = Hash[*dict2, :blank, :blank, *dict2]
+# dict3 = dict[117470, 58735]
+# hash3 = Hash[*dict3, :blank, :blank, *dict3]
+# dict4 = dict[176205, 58732]
+# hash4 = Hash[*dict4, :blank, *dict4, :blank]
+
+# .238
+# dict = File.read(path).split("\n")
+# hashes = [{},{},{},{}]
+# for i in 0..234936
+#   hashes[i / 58735][dict[i]] = nil
+# end
+
+# contents = $stdin.read
+
+# output = contents.gsub(/[^ \n]+/) do |word|
+#   w = word.downcase
+#   if hash1.has_key?(w)
+#     word
+#   elsif hash2.has_key?(w)
+#     word
+#   elsif hash3.has_key?(w)
+#     word
+#   elsif hash4.has_key?(w)
+#     word
+#   else
+#     "<#{word}>"
+#   end
+# end
+
+# print output

@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 path = ARGV.length > 0 ? ARGV[0] : '/usr/share/dict/words'
-$dict = File.read(path).split("\n")
+$dict = File.read(path)
 
+$dict = File.read(path).split("\n")
 contents = $stdin.read
 output = contents.gsub(/[^ \n]+/) do |word|
   w = word.downcase
